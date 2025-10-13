@@ -74,6 +74,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'signup.dart';
+import 'home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -87,7 +88,7 @@ class _LoginScreenState extends State<LoginScreen> {
   bool showPassword = false;
 
   Future<void> login() async {
-    final url = Uri.parse('http://10.225.230.158:8000/api/userauth/login/');
+    final url = Uri.parse('http://localhost:8000/api/userauth/login/');
     final response = await http.post(
       url,
       headers: {'Content-Type': 'application/json'},
@@ -99,8 +100,12 @@ class _LoginScreenState extends State<LoginScreen> {
     if (response.statusCode == 200) {
       print("Hai"); // ONLY print to console
       setState(() {
-        loginMessage = ''; // Clear error on success
+        loginMessage = 'login sucessfull'; // Clear error on success
       });
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const HomeScreen()),
+      );
       // Optionally, do navigation here
     } else {
       setState(() {

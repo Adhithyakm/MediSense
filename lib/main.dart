@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'screens/home_screen.dart';
+import 'screens/medisensescreen.dart';
 
 void main() {
   runApp(const MediSenseApp());
@@ -12,7 +12,9 @@ class MediSenseApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
+      home:SplashScreen(),
+
+
     );
   }
 }

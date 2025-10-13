@@ -1,6 +1,27 @@
 import 'package:flutter/material.dart';
+import 'roleselection_screen.dart'; // Make sure this is correctly imported
 
-class SplashScreen extends StatelessWidget {
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({Key? key}) : super(key: key);
+
+  @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+
+  @override
+  void initState() {
+    super.initState();
+    // Navigate to RoleSelectionScreen after 3 seconds
+    Future.delayed(Duration(seconds: 3), () {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => RoleSelectionScreen()),
+      );
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,11 +40,11 @@ class SplashScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Image.asset(
-                'lib/assets/logo.png', // This matches your actual location
+                'lib/assets/logo.png',
                 height: 60,
                 fit: BoxFit.contain,
               ),
-              SizedBox(height: 5), // Make it 4 or even 0 for a tighter gap
+              SizedBox(height: 5),
               Text(
                 'MediSense',
                 style: TextStyle(

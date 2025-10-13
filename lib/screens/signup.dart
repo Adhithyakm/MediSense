@@ -100,6 +100,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'login_screen.dart';
+import 'home_screen.dart';
 
 class SignUpPage extends StatefulWidget {
  @override
@@ -123,7 +124,7 @@ class _SignUpPageState extends State<SignUpPage> {
    });
    return;
   }
-  final url = Uri.parse('http://10.225.230.158:8000/api/accounts/register/');
+  final url = Uri.parse('http://localhost:8000/api/accounts/register/');
   final response = await http.post(
    url,
    headers: {'Content-Type': 'application/json'},
@@ -139,6 +140,12 @@ class _SignUpPageState extends State<SignUpPage> {
    setState(() {
     message = "Sign up successful!";
    });
+   Navigator.pushReplacement(
+    context,
+    MaterialPageRoute(
+     builder: (context) => HomeScreen(fullName: fullNameController.text.trim()),
+    ),
+   );
    // Optionally, clear fields or navigate to login
    // Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => LoginScreen()));
   } else {
