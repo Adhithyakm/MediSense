@@ -1,39 +1,18 @@
 import 'package:flutter/material.dart';
-import 'screens/medisensescreen.dart'; // This should exist as shown above
-import 'screens/roleselection_screen.dart';
+import 'screens/home_screen.dart';
+
 void main() {
-  runApp(MediSenseApp());
+  runApp(const MediSenseApp());
 }
 
 class MediSenseApp extends StatelessWidget {
+  const MediSenseApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'MediSense',
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SplashRoute(), // Refers to the class inside medisensescreen.dart
+      home: HomeScreen(),
     );
   }
 }
-class SplashRoute extends StatefulWidget {
-  @override
-  _SplashRouteState createState() => _SplashRouteState();
-}
-
-class _SplashRouteState extends State<SplashRoute> {
-  @override
-  void initState() {
-    super.initState();
-    Future.delayed(const Duration(seconds: 8), () {
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (_) => RoleSelectionScreen()),
-      );
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return SplashScreen();
-  }
-}
-

@@ -32,6 +32,7 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.8
   http: ^1.5.0
+  image_picker: ^1.1.2
 
 dev_dependencies:
   flutter_test:
@@ -56,6 +57,12 @@ flutter:
   uses-material-design: true
   assets:
     - lib/assets/logo.png
+    - lib/assets/ernakulam.png
+    - lib/assets/trivandrum.png
+    - lib/assets/kozhikode.png
+    - lib/assets/thrissur.png
+    - lib/assets/alappuzha.png
+    - lib/assets/palakkad.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:
