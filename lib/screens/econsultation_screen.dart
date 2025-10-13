@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
 class EConsultationScreen extends StatelessWidget {
-
-  final String fullName;
-  const EConsultationScreen({Key? key, required this.fullName}) : super(key: key);
+  const EConsultationScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

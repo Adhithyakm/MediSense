@@ -140,12 +140,7 @@ class _SignUpPageState extends State<SignUpPage> {
    setState(() {
     message = "Sign up successful!";
    });
-   Navigator.pushReplacement(
-    context,
-    MaterialPageRoute(
-     builder: (context) => HomeScreen(fullName: fullNameController.text.trim()),
-    ),
-   );
+
    // Optionally, clear fields or navigate to login
    // Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => LoginScreen()));
   } else {
@@ -331,7 +326,7 @@ class _SignUpPageState extends State<SignUpPage> {
            ),
           ),
           child: Text(
-           "Sign In", // You may want to call it "Sign Up" instead
+           "Sign Up", // You may want to call it "Sign Up" instead
            style: TextStyle(
             color: Colors.white,
             fontSize: 18,

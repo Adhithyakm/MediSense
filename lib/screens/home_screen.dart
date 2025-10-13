@@ -1,34 +1,27 @@
 import 'package:flutter/material.dart';
 import 'report_symptoms_screen.dart';
-import 'report_risk_screen.dart'; // Assuming this is ReportCommunityRiskScreen
+import 'report_risk_screen.dart';
 import 'econsultation_screen.dart';
 import 'map_screen.dart';
 import 'tasks_screen.dart';
-import 'profile_screen.dart'; // Assuming this is SetupProfileScreen
+import 'profile_screen.dart';
 
 class HomeScreen extends StatefulWidget {
-  final String fullName;
+  const HomeScreen({Key? key}) : super(key: key);
 
-  const HomeScreen({Key? key, required this.fullName}) : super(key: key);
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
-  late List<Widget> _pages;
 
-  @override
-  void initState() {
-    super.initState();
-    _pages = [
-      HomeContent(fullName: widget.fullName),
-      const MapScreen(),
-      const TasksScreen(),
-      // Ensure SetupProfileScreen can take fullName if needed, or remove if not
-      SetupProfileScreen(fullName: widget.fullName), // Added fullName
-    ];
-  }
+  final List<Widget> _pages = [
+    const HomeContent(),
+    const MapScreen(),
+    const TasksScreen(),
+    const SetupProfileScreen(),
+  ];
 
   void _onItemTapped(int index) {
     setState(() {
@@ -71,9 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
 }
 
 class HomeContent extends StatelessWidget {
-  final String fullName;
-
-  const HomeContent({Key? key, required this.fullName}) : super(key: key);
+  const HomeContent({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -103,9 +94,9 @@ class HomeContent extends StatelessWidget {
             const SizedBox(height: 20),
 
             // Greeting
-            Text( // Removed 'const' because of string interpolation
-              "Welcome $fullName!",
-              style: const TextStyle( // Make TextStyle const if possible
+            const Text(
+              "Welcome Sarah!",
+              style: TextStyle(
                 color: Color(0xFF30B1D2),
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
@@ -124,9 +115,8 @@ class HomeContent extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => ReportSymptomsScreen(fullName: fullName)),
+                  MaterialPageRoute(builder: (context) => const ReportSymptomsScreen()),
                 );
-                // Removed the extra closing parenthesis here, which was causing syntax errors.
               },
             ),
             const SizedBox(height: 20),
@@ -136,7 +126,7 @@ class HomeContent extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => ReportCommunityRiskScreen(fullName: fullName)),
+                  MaterialPageRoute(builder: (context) => ReportCommunityRiskScreen()),
                 );
               },
             ),
@@ -147,7 +137,7 @@ class HomeContent extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => EConsultationScreen(fullName: fullName)), // fullName is now passed
+                  MaterialPageRoute(builder: (context) => const EConsultationScreen()),
                 );
               },
             ),

@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'home_screen.dart'; // Make sure this path is correct
+import 'home_screen.dart';
 
 class ReportSymptomsScreen extends StatefulWidget {
-  final String fullName;
-
-  // FIX 1: Add a semicolon at the end of the constructor initialization list
-  const ReportSymptomsScreen({Key? key, required this.fullName}) : super(key: key);
+  const ReportSymptomsScreen({Key? key}) : super(key: key);
 
   @override
   State<ReportSymptomsScreen> createState() => _ReportSymptomsScreenState();
@@ -28,23 +25,17 @@ class _ReportSymptomsScreenState extends State<ReportSymptomsScreen> {
       case 0:
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(
-            // FIX 2: Remove 'const' from HomeScreen because widget.fullName is not a compile-time constant
-            builder: (context) => HomeScreen(fullName: widget.fullName),
-          ),
+          MaterialPageRoute(builder: (context) => const HomeScreen()),
         );
         break;
       case 1:
-      // Navigate to Map (assuming MapScreen also takes fullName if needed)
-      // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MapScreen(fullName: widget.fullName)));
+      // Navigate to Map
         break;
       case 2:
-      // Navigate to Tasks (assuming TasksScreen also takes fullName if needed)
-      // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => TasksScreen(fullName: widget.fullName)));
+      // Navigate to Tasks
         break;
       case 3:
-      // Navigate to Profile (assuming SetupProfileScreen also takes fullName if needed)
-      // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => SetupProfileScreen(fullName: widget.fullName)));
+      // Navigate to Profile
         break;
     }
   }

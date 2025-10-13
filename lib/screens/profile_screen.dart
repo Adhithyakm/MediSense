@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 
 class SetupProfileScreen extends StatefulWidget {
-  final String fullName; // <--- ADD THIS LINE
+  const SetupProfileScreen({super.key});
 
-  // <--- MODIFY THE CONSTRUCTOR TO ACCEPT fullName
-  const SetupProfileScreen({super.key, required this.fullName});
   @override
   State<SetupProfileScreen> createState() => _SetupProfileScreenState();
 }
