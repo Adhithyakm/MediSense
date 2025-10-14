@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<openServiceDescription xmlns="http://www.microsoft.com/schemas/openservicedescription/1.0">
+  <homepageUrl>http://www.microsofttranslator.com/?ref=IE8Activity</homepageUrl>
+  <display>
+    <name>Traduzir com o Bing</name>
+    <icon>http://www.microsofttranslator.com/icon.ico</icon>
+  </display>
+  <activity category="Traduzir">
+    <activityAction context="selection">
+      <preview method="post" action="http://www.microsofttranslator.com/DefaultPrev.aspx?ref=IE8Activity">
+        <parameter name="SourceText" value="{selection}" />
+        <parameter name="SourceURL" value="{documentUrl}" />
+      </preview>
+      <execute method="post" action="http://www.microsofttranslator.com/Default.aspx?ref=IE8Activity">
+        <parameter name="SourceText" value="{selection}" />
+        <parameter name="SourceURL" value="{documentUrl}" />
+      </execute>
+    </activityAction>
+    <activityAction context="document">
+      <preview method="post" action="http://www.microsofttranslator.com/BVPrev.aspx?ref=IE8Activity">
+        <parameter name="SourceURL" value="{documentUrl}" />
+        <parameter name="SourceTitle" value="{documentTitle}" />
+      </preview>
+      <execute method="get" action="http://www.microsofttranslator.com/BV.aspx?ref=IE8Activity&amp;a={documentUrl}" />
+    </activityAction>
+    <activityAction context="link">
+      <preview method="post" action="http://www.microsofttranslator.com/BVPrev.aspx?ref=IE8Activity">
+        <parameter name="SourceURL" value="{link}" />
+        <parameter name="SourceTitle" value="{linkText}" />
+      </preview>
+      <execute method="get" action="http://www.microsofttranslator.com/BV.aspx?ref=IE8Activity&amp;a={link}" />
+    </activityAction>
+  </activity>
+</openServiceDescription>

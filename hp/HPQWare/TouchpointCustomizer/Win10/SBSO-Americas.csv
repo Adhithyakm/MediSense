@@ -1,0 +1,14 @@
+Name,Order,Size,Region,AppType,Value,ChasisType,BrandName,RegionCode,SKUOptionConfig,ChannelID,FeatureBytes,UID
+myHP,1,2x2,ALL,AppID,AD2F1837.myHP_v10z8vjag6ke6!App,,,,,,,
+McAfee,2,2x2,ALL,AppID,5A894077.McAfeeSecurity_wafk5atnkzcwy!App,,,,,,,
+Adobe,3,2x2,ALL,DtAppLinkPath,,,,,,,,1
+Booking.com,4,2x2,ALL,DtAppLinkPath,C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Booking.com.lnk,,,,,,,
+LastPass Password Manager,5,2x2,ALL,DtAppLinkPath,C:\ProgramData\Microsoft\Windows\Start Menu\Programs\LastPass.lnk,,,,,,,
+Express VPN,6,2x2,ALL,DtAppLinkPath,C:\ProgramData\Microsoft\Windows\Start Menu\Programs\ExpressVPN.lnk,,,,,,,
+QuickDrop,51,1x1,ALL,AppID,AD2F1837.HPQuickDrop_v10z8vjag6ke6!App,,,,,,,
+Amazon.com,101,Taskbar,ALL,DtAppLinkPath,C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Amazon.com.lnk,,,,,,,
+Dropbox,102,Taskbar,ALL,AppID,C27EB4BA.DropboxOEM_xbfy0k16fey96!App,,,,,,,
+myHP,103,Taskbar,ALL,AppID,AD2F1837.myHP_v10z8vjag6ke6!App,,,,,,,
+Amazon.com,1,EdgeFav,ALL,Link,http://www.amazon.com/gp/ubp/oneButton/config/redirectHome?tagbase=hpbus-ubpl&ref=aagateway-businesspc-hp,,,,,,,
+Booking.com,2,EdgeFav,ALL,Link,https://www.booking.com/index.html?aid=1980379&label=NW22C1EF,,,,,,,
+ExpressVPN,3,EdgeFav,ALL,Link,http://js.redirect.hp.com/jumpstation?bd=expressvpn&c=*&locale=en_us&pf=*&s=*&tp=edge,,,,,,,

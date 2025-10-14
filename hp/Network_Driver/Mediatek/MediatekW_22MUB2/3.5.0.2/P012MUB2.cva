@@ -1,0 +1,328 @@
+﻿[CVA File Information]
+CVATimeStamp=20220721T214254
+CVASyntaxVersion=2.1A9
+
+[Software Title]
+US=Mediatek Wireless LAN Driver
+
+[US.Software Description]
+This package contains the Win10 DCHU driver installation package for the Mediatek WLAN in the supported notebook/laptop models on Win10 .
+
+[General]
+PN=P012MU-B2F
+Version=3.5.0.2
+Revision=C
+Pass=1
+Type=Driver
+Category=Driver - Network
+TargetPartition=
+SystemMustBeRebooted=0
+VendorName=Mediatek
+VendorVersion=3.5.0.2
+
+[SupportedLanguages]
+Languages=GLOBAL
+Countries=GBL
+
+[ProfessionalInnovations]
+HPPI=No
+LearnMore=
+
+[Softpaq]
+SoftpaqNumber=
+SupersededSoftpaqNumber=
+SoftPaqMD5=
+
+[DetailFileInformation]
+mtkwlan.dll=<WINSYSDIR>\drivers,0x0003,0x0005,0x0000,0x0002,WT64
+mtkwlan.dll=<WINSYSDIR>\drivers,0x0003,0x0005,0x0000,0x0002,WTIOT64
+mtkwlan.dll=<WINSYSDIR>\drivers,0x0003,0x0005,0x0000,0x0002,W11
+
+[Devices_INFPath]
+WT64_INFPath=src\Drivers\
+WTIOT64_INFPath=src\Drivers\
+W11_INFPath=src\Drivers\
+
+[Devices]
+PCI\VEN_14C3&DEV_7961&SUBSYS_46821A3B&REV_00="MediaTek MT7921 Wi-Fi 6 802.11ax PCIe Adapter"
+PCI\VEN_14C3&DEV_7961&SUBSYS_46821A3B="MediaTek MT7921 Wi-Fi 6 802.11ax PCIe Adapter"
+PCI\VEN_14C3&DEV_7961&CC_028000="MediaTek MT7921 Wi-Fi 6 802.11ax PCIe Adapter"
+PCI\VEN_14C3&DEV_7961&CC_0280="MediaTek MT7921 Wi-Fi 6 802.11ax PCIe Adapter"
+PCI\VEN_14C3&DEV_0616&SUBSYS_E0CB105B&REV_00="MediaTek Wi-Fi 6E MT7922 160MHz PCIe Adapter"
+PCI\VEN_14C3&DEV_0616&SUBSYS_E0CB105B="MediaTek Wi-Fi 6E MT7922 160MHz PCIe Adapter"
+PCI\VEN_14C3&DEV_0616&CC_028000="MediaTek Wi-Fi 6E MT7922 160MHz PCIe Adapter"
+PCI\VEN_14C3&DEV_0616&CC_0280="MediaTek Wi-Fi 6E MT7922 160MHz PCIe Adapter"
+PCI\VEN_14C3&DEV_0616&SUBSYS_E0DB105B&REV_00="MediaTek Wi-Fi 6E MT7922 (RZ616) 160MHz PCIe Adapter"
+PCI\VEN_14C3&DEV_0616&SUBSYS_E0DB105B="MediaTek Wi-Fi 6E MT7922 (RZ616) 160MHz PCIe Adapter"
+PCI\VEN_14C3&DEV_7902&SUBSYS_1EDE14C3&REV_00="MediaTek Wi-Fi 6E MT7902 Wireless LAN Card"
+PCI\VEN_14C3&DEV_7902&SUBSYS_1EDE14C3="MediaTek Wi-Fi 6E MT7902 Wireless LAN Card"
+PCI\VEN_14C3&DEV_7902&CC_028000="MediaTek Wi-Fi 6E MT7902 Wireless LAN Card"
+PCI\VEN_14C3&DEV_7902&CC_0280="MediaTek Wi-Fi 6E MT7902 Wireless LAN Card"
+
+[System Information]
+SysId01=0x864A
+SysName01= 14 Laptop,OPP Laptop
+SysId02=0x864B
+SysName02= 14 Laptop,OPP Laptop
+SysId03=0x864D
+SysName03= 14 Laptop,OPP Laptop
+SysId04=0x86C8
+SysName04= 14 Laptop,OPP Laptop
+SysId05=0x87FD
+SysName05= 14 Laptop,OPP Laptop
+SysId06=0x88E9
+SysName06= 14 Laptop,OPP Laptop
+SysId07=0x89BB
+SysName07= 14 Laptop,OPP Laptop
+SysId08=0x8A1F
+SysName08= 14 Laptop,OPP Laptop
+SysId09=0x864E
+SysName09= 15 Laptop,OPP Laptop
+SysId10=0x864F
+SysName10= 15 Laptop,OPP Laptop
+SysId11=0x8651
+SysName11= 15 Laptop,OPP Laptop
+SysId12=0x86C9
+SysName12= 15 Laptop,OPP Laptop
+SysId13=0x87FE
+SysName13= 15 Laptop,OPP Laptop
+SysId14=0x88EA
+SysName14= 15 Laptop,OPP Laptop
+SysId15=0x89BC
+SysName15= 15 Laptop,OPP Laptop
+SysId16=0x8A20
+SysName16= 15 Laptop,OPP Laptop
+SysId17=0x8916
+SysName17= 13 Laptop,HP Pavilion Aero 13 Laptop PC
+SysId18=0x89FA
+SysName18= 13 Laptop,HP Pavilion Aero 13 Laptop PC
+SysId19=0x8A29
+SysName19=HP ENVY x360 15.6 inch  2-in-1 Laptop PC
+SysId20=0x8A2A
+SysName20=HP ENVY x360 15.6 inch  2-in-1 Laptop PC
+SysId21=0x8A2C
+SysName21=HP ENVY 16 inch Laptop PC
+SysId22=0x8A2D
+SysName22=HP ENVY 16 inch Laptop PC
+SysId23=0x8A36
+SysName23=HP Pavilion Plus 14 inch Laptop PC
+SysId24=0x8A37
+SysName24=HP Pavilion Plus 14 inch Laptop PC
+SysId25=0x8A95
+SysName25=HP Pavilion Plus 14 inch Laptop PC
+SysId26=0x8A40
+SysName26= 16.1 Gaming Laptop,OMEN by HP 16.1 inch Gaming Laptop PC
+SysId27=0x8A41
+SysName27= 16.1 Gaming Laptop,OMEN by HP 16.1 inch Gaming Laptop PC
+SysId28=0x8A42
+SysName28= 16.1 Gaming Laptop,OMEN by HP 16.1 inch Gaming Laptop PC
+SysId29=0x8A43
+SysName29= 16.1 Gaming Laptop,OMEN by HP 16.1 inch Gaming Laptop PC
+SysId30=0x8A44
+SysName30= 16.1 Gaming Laptop,OMEN by HP 16.1 inch Gaming Laptop PC
+SysId31=0x87C9
+SysName31=HP Pavilion 14 Laptop PC,14 Laptop
+SysId32=0x87CA
+SysName32= 14 Laptop,HP Pavilion 14 Laptop PC
+SysId33=0x884E
+SysName33= 14 Laptop,HP Pavilion 14 Laptop PC
+SysId34=0x8987
+SysName34= 14 Laptop,HP Pavilion 14 Laptop PC
+SysId35=0x8988
+SysName35= 14 Laptop,HP Pavilion 14 Laptop PC
+SysId36=0x89F3
+SysName36= 14 Laptop,HP Pavilion 14 Laptop PC
+SysId37=0x89F4
+SysName37= 14 Laptop,HP Pavilion 14 Laptop PC
+SysId38=0x87CB
+SysName38=HP Pavilion 15 Laptop PC,15 Laptop
+SysId39=0x87CC
+SysName39= 15 Laptop,HP Pavilion 15 Laptop PC
+SysId40=0x8850
+SysName40= 15 Laptop,HP Pavilion 15 Laptop PC
+SysId41=0x898A
+SysName41= 15 Laptop,HP Pavilion 15 Laptop PC
+SysId42=0x898B
+SysName42= 15 Laptop,HP Pavilion 15 Laptop PC
+SysId43=0x898C
+SysName43= 15 Laptop,HP Pavilion 15 Laptop PC
+SysId44=0x89F6
+SysName44= 15 Laptop,HP Pavilion 15 Laptop PC
+SysId45=0x89F7
+SysName45= 15 Laptop,HP Pavilion 15 Laptop PC
+SysId46=0x8861
+SysName46=HP ProBook 445 G8 Notebook PC,445 Notebook PC
+SysId47=0x8A8E
+SysName47= 445 Notebook PC,HP ProBook 445 G8 Notebook PC
+SysId48=0x8864
+SysName48=HP ProBook 455 G8 Notebook PC,455 Notebook PC
+SysId49=0x8A90
+SysName49= 455 Notebook PC,HP ProBook 455 G8 Notebook PC
+SysId50=0x8867
+SysName50=HP ZHAN 66 Pro A 14 G4 Notebook PC,66 Pro A 14 Notebook PC
+SysId51=0x8A92
+SysName51= 66 Pro A 14 Notebook PC,HP ZHAN 66 Pro A 14 G4 Notebook PC
+SysId52=0x888A
+SysName52=HP ENVY x360 15 Convertible PC,15 Convertible PC
+SysId53=0x89EA
+SysName53= 15 Convertible PC,HP ENVY x360 15 Convertible PC
+SysId54=0x8895
+SysName54= 835 Notebook PC,845 Notebook PC,855 Notebook PC,HP EliteBook 835 G8 Notebook PC,HP EliteBook 845 G8 Notebook PC,HP EliteBook 855 G8 Notebook PC
+SysId55=0x88B3
+SysName55=HP ENVY x360 15 Convertible PC,15 Convertible PC
+SysId56=0x88B4
+SysName56= 15 Convertible PC,HP ENVY x360 15 Convertible PC
+SysId57=0x8982
+SysName57= 15 Convertible PC,HP ENVY x360 15 Convertible PC
+SysId58=0x8983
+SysName58= 15 Convertible PC,HP ENVY x360 15 Convertible PC
+SysId59=0x89DD
+SysName59= 15 Convertible PC,HP ENVY x360 15 Convertible PC
+SysId60=0x88B5
+SysName60=HP ENVY 17 Laptop PC,17 Laptop
+SysId61=0x88B6
+SysName61= 17 Laptop,HP ENVY 17 Laptop PC
+SysId62=0x8984
+SysName62= 17 Laptop,HP ENVY 17 Laptop PC
+SysId63=0x8985
+SysName63= 17 Laptop,HP ENVY 17 Laptop PC
+SysId64=0x89DE
+SysName64= 17 Laptop,HP ENVY 17 Laptop PC
+SysId65=0x89DF
+SysName65= 17 Laptop,HP ENVY 17 Laptop PC
+SysId66=0x88BA
+SysName66=HP Pavilion x360 14 Convertible PC,14 Convertible
+SysId67=0x88BB
+SysName67= 14 Convertible,HP Pavilion x360 14 Convertible PC
+SysId68=0x89BD
+SysName68= 14 Convertible,HP Pavilion x360 14 Convertible PC
+SysId69=0x8A11
+SysName69= 14 Convertible,HP Pavilion x360 14 Convertible PC
+SysId70=0x88BC
+SysName70=HP Pavilion x360 15 Convertible PC,15 Convertible
+SysId71=0x8A12
+SysName71= 15 Convertible,HP Pavilion x360 15 Convertible PC
+SysId72=0x88EB
+SysName72=Victus by HP 16 Laptop PC
+SysId73=0x88EC
+SysName73=HP Notebook,Victus by HP 16 Laptop PC
+SysId74=0x88ED
+SysName74=HP Notebook,Victus by HP 16 Laptop PC
+SysId75=0x88EE
+SysName75=HP Notebook,Victus by HP 16 Laptop PC
+SysId76=0x8934
+SysName76=Victus by HP 16 Laptop PC
+SysId77=0x8A21
+SysName77=Victus by HP 16 Laptop PC
+SysId78=0x8A22
+SysName78=Victus by HP 16 Laptop PC
+SysId79=0x88F4
+SysName79=OMEN by HP 16 Laptop PC,16 Laptop PC
+SysId80=0x88F5
+SysName80= 16 Laptop PC,OMEN by HP 16 Laptop PC
+SysId81=0x88F6
+SysName81= 16 Laptop PC,OMEN by HP 16 Laptop PC
+SysId82=0x88FD
+SysName82= 16 Laptop PC,OMEN by HP 16 Laptop PC
+SysId83=0x8A13
+SysName83= 16 Laptop PC,OMEN by HP 16 Laptop PC
+SysId84=0x8A14
+SysName84= 16 Laptop PC,OMEN by HP 16 Laptop PC
+SysId85=0x8A15
+SysName85= 16 Laptop PC,OMEN by HP 16 Laptop PC
+SysId86=0x8A16
+SysName86= 16 Laptop PC,OMEN by HP 16 Laptop PC
+SysId87=0x88F7
+SysName87=OMEN by HP 17 Laptop PC,17 Laptop PC
+SysId88=0x88FE
+SysName88= 17 Laptop PC,OMEN by HP 17 Laptop PC
+SysId89=0x8A17
+SysName89= 17 Laptop PC,OMEN by HP 17 Laptop PC
+SysId90=0x8A18
+SysName90= 17 Laptop PC,OMEN by HP 17 Laptop PC
+SysId91=0x8A19
+SysName91= 17 Laptop PC,OMEN by HP 17 Laptop PC
+SysId92=0x8A1A
+SysName92= 17 Laptop PC,OMEN by HP 17 Laptop PC
+SysId93=0x88F8
+SysName93=Victus by HP 16 Laptop PC,16 Laptop PC
+SysId94=0x88F9
+SysName94= 16 Laptop PC,Victus by HP 16 Laptop PC
+SysId95=0x88FA
+SysName95= 16 Laptop PC,Victus by HP 16 Laptop PC
+SysId96=0x8A25
+SysName96= 16 Laptop PC,Victus by HP 16 Laptop PC
+SysId97=0x8A26
+SysName97= 16 Laptop PC,Victus by HP 16 Laptop PC
+SysId98=0x8A27
+SysName98= 16 Laptop PC,Victus by HP 16 Laptop PC
+SysId99=0x891A
+SysName99=HP Spectre x360 16 inch 2-in-1 Laptop PC,2-in-1 Laptop
+SysId100=0x891B
+SysName100= 2-in-1 Laptop,HP Spectre x360 16 inch 2-in-1 Laptop PC
+SysId101=0x891C
+SysName101= 2-in-1 Laptop,HP Spectre x360 16 inch 2-in-1 Laptop PC
+SysId102=0x891D
+SysName102= 2-in-1 Laptop,HP Spectre x360 16 inch 2-in-1 Laptop PC
+SysId103=0x891E
+SysName103=HP Spectre x360 16 inch 2-in-1 Laptop PC
+SysId104=0x891F
+SysName104=HP Spectre x360 16 inch 2-in-1 Laptop PC
+SysId105=0x8A28
+SysName105=HP ENVY x360 13.3 inch  2-in-1Laptop PC
+SysId106=0x8A2E
+SysName106=HP ENVY 17 inch Laptop PC
+SysId107=0x8A30
+SysName107=HP ENVY 17.3 inch Laptop PC
+SysId108=0x8A31
+SysName108=HP ENVY x360 15.6 inch  2-in-1 Laptop PC
+SysId109=0x8B3A
+SysName109=HP ENVY x360 15.6 inch  2-in-1 Laptop PC
+SysId110=0x8A34
+SysName110=HP Pavilion x360 14 inch  2-in-1Laptop PC
+SysId111=0x8A35
+SysName111=HP Pavilion x360 14 inch  2-in-1Laptop PC
+SysId112=0x8A3C
+SysName112=Victus by HP 15.6 inch Gaming Laptop PC
+SysId113=0x8A3D
+SysName113=Victus by HP 15.6 inch Gaming Laptop PC
+SysId114=0x8A3E
+SysName114=Victus by HP 15.6 inch Gaming Laptop PC
+SysId115=0x8A3F
+SysName115=Victus by HP 15.6 inch Gaming Laptop PC
+SysId116=0x8A4C
+SysName116=OMEN by HP 16.1 inch  Gaming Laptop PC,OMEN by HP 16.1 inch Gaming Laptop PC
+SysId117=0x8A4D
+SysName117=OMEN by HP 16.1 inch  Gaming Laptop PC,OMEN by HP 16.1 inch Gaming Laptop PC
+SysId118=0x8A4E
+SysName118=OMEN by HP 16.1 inch  Gaming Laptop PC
+SysId119=0x8A4F
+SysName119=Victus by HP 15.6 inch Gaming Laptop PC
+SysId120=0x8A50
+SysName120=Victus by HP 15.6 inch Gaming Laptop PC
+SysId121=0x8B5C
+SysName121= 445 Notebook PC,455 Notebook PC,HP ProBook 445 14 inch G10 Notebook PC,HP ProBook 455 15.6 inch G10 Notebook PC
+SysId122=0x8B5F
+SysName122= 645 Notebook PC,655 Notebook PC,HP EliteBook 645 14 inch G10 Notebook PC,HP EliteBook 655 15.6  inch G10 Notebook PC
+SysId123=0x8BAD
+SysName123=OMEN by HP 17 Laptop PC
+SysId124=0x8BB0
+SysName124=OMEN by HP 17 Laptop PC
+
+[Operating Systems]
+W11=OEM
+WT64=OEM
+WTIOT64=OEM
+
+[Install Execution]
+Install=InstallDriver.cmd
+SilentInstall="install.cmd"
+
+[Private]
+Private_SSMCompliant=1
+DPB_Compliant=1
+
+[CVAToolDocumentStamp]
+Generate By CVA Tool V1.0.0.0; Spec V2.1 A9 on 7/21/2022 9:42:54 PM
+Copyright © 2022 HP Development Company, L.P.
+

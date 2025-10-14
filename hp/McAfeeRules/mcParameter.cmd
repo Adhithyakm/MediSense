@@ -1,0 +1,15 @@
+set tarOPCode=ACJ
+set tarRetail=00
+set tarBrand=VICTUS
+set ChannelType=BTO
+set tarLength=IS_M30d
+set tarOSType=0 
+set file=C:\hp\McAfeeRules\con_NBrule.ini
+set outAFFID=1357_431
+set MISsuiteID=1357_431
+set oem=oemresf_1357_431.pam
+set terms=IS_M30d
+set UWPAFFID=1357
+set terms=GXT30D
+set chassisType=9  
+set rid=/rid:1357

@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<openServiceDescription xmlns="http://www.microsoft.com/schemas/openservicedescription/1.0">
+  <homepageUrl>http://www.bing.com/maps</homepageUrl>
+  <display>
+    <name>Karten von Bing Maps</name>
+    <icon>http://www.bing.com/favicon.ico</icon>
+  </display>
+  <activity category="Karten">
+    <activityAction context="selection">
+      <execute method="get" action="http://www.bing.com/maps/default.aspx">
+        <parameter name="where1" value="{selection}" />
+        <parameter name="FORM" value="HRTS" />
+      </execute>
+      <preview method="get" action="http://www.bing.com/maps/geotager.aspx">
+        <parameter name="b" value="{selection}" />
+        <parameter name="clean" value="true" />
+        <parameter name="w" value="320" />
+        <parameter name="h" value="240" />
+        <parameter name="client" value="ie" />
+        <parameter name="format" value="full" />
+      </preview>
+    </activityAction>
+  </activity>
+</openServiceDescription>

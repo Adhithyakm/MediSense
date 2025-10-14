@@ -1,0 +1,36 @@
+{
+	"firstRunOEMPins" : 
+	[
+		{
+			"caption" : 
+			{
+				"default" : "Personalize your PC"
+			},
+			"packagedAppId" : "AD2F1837.myHP_v10z8vjag6ke6!App"
+		}
+	],
+	"primaryOEMPins" : 
+	[
+		{
+			"packagedAppId" : "AD2F1837.myHP_v10z8vjag6ke6!App"
+		},
+		{
+			"desktopAppLink" : "C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\Amazon.com.lnk"
+		},
+		{
+			"desktopAppLink" : "C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\ExpressVPN.lnk"
+		},
+		{
+			"packagedAppId" : "C27EB4BA.DropboxOEM_xbfy0k16fey96!App"
+		}
+	],
+	"secondaryOEMPins" : 
+	[
+		{
+			"packagedAppId" : "57540AMZNMobileLLC.AmazonAlexa_22t9g3sebte08!App"
+		},
+		{
+			"packagedAppId" : "26720RandomSaladGamesLLC.3899848563C1F_kx24dqmazqk8j!App"
+		}
+	]
+}

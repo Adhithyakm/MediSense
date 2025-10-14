@@ -1,0 +1,16 @@
+Name,Order,Size,Region,AppType,Value,ChasisType,BrandName,RegionCode,SKUOptionConfig,ChannelID,FeatureBytes,UID
+MyOffice,1,2x2,ALL,DtAppLinkPath,,,,,,,,4
+Yandex,2,2x2,ALL,DtAppLinkPath,,,,,,,,7
+myHP,3,2x2,ALL,AppID,AD2F1837.myHP_v10z8vjag6ke6!App,,,,,,,
+McAfee,4,2x2,ALL,AppID,5A894077.McAfeeSecurity_wafk5atnkzcwy!App,,,,,,S_Mode,
+McAfee,4,2x2,ALL,DtAppLinkPath,C:\ProgramData\Microsoft\Windows\Start Menu\Programs\McAfee\McAfee LiveSafe.lnk,,,,,,,
+Express VPN,5,2x2,ALL,DtAppLinkPath,C:\ProgramData\Microsoft\Windows\Start Menu\Programs\ExpressVPN.lnk,,,,,,,
+QuickDrop,6,2x2,ALL,AppID,AD2F1837.HPQuickDrop_v10z8vjag6ke6!App,,,,,,,
+Walmart Shopping,7,2x2,ALL,DtAppLinkPath,C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Walmart.lnk,,,,,3,,
+LastPass Password Manager,8,2x2,ALL,DtAppLinkPath,C:\ProgramData\Microsoft\Windows\Start Menu\Programs\LastPass.lnk,,,,,,,
+OMEN Command Center,101,Taskbar,ALL,AppID,AD2F1837.OMENCommandCenter_v10z8vjag6ke6!AD2F1837.OMENCommandCenter,,,,,,,
+HPSA,102,Taskbar,ALL,AppID,AD2F1837.HPSupportAssistant_v10z8vjag6ke6!AD2F1837.HPSupportAssistant,,,,,,,
+Dropbox,103,Taskbar,ALL,AppID,C27EB4BA.DropboxOEM_xbfy0k16fey96!App,,,,,,,
+ExpressVPN,1,EdgeFav,ALL,Link,http://js.redirect.hp.com/jumpstation?bd=expressvpn&c=*&locale=en_us&pf=*&s=*&tp=edge,,,,,,,
+McAfee,2,EdgeFav,ALL,Link,http://www.mcafee.com/consumer/v/browserfav/hp.html,,,,,,,
+LastPass,3,EdgeFav,ALL,Link,https://js.redirect.hp.com/jumpstation?bd=lastpass&c=222&locale=*&pf=*&tp=edge&TYPE=3,,,,,,,

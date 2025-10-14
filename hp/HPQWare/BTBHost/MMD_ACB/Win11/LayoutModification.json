@@ -1,0 +1,11 @@
+{
+	"primaryOEMPins" : 
+	[
+		{
+			"desktopAppLink" : "C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\МойОфис.lnk"
+		},
+		{
+			"desktopAppLink" : "C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\Яндекс Браузер.lnk"
+		}
+	]
+}

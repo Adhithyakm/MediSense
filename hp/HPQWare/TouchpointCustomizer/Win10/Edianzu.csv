@@ -1,0 +1,9 @@
+Name,Order,Size,Region,AppType,Value,ChasisType,BrandName,RegionCode,SKUOptionConfig,ChannelID,FeatureBytes,UID
+HP Palette,1,2x2,ALL,AppID,AD2F1837.HPPalette_v10z8vjag6ke6!App,,,,,,,
+OMEN Command Center,2,2x2,ALL,AppID,AD2F1837.OMENCommandCenter_v10z8vjag6ke6!AD2F1837.OMENCommandCenter,,Pavilion Gaming,,,,,
+myHP,3,2x2,ALL,AppID,AD2F1837.myHP_v10z8vjag6ke6!App,,,,,,,
+McAfee,4,2x2,ALL,AppID,5A894077.McAfeeSecurity_wafk5atnkzcwy!App,,,,,,,
+File Backup,5,2x2,ALL,AppID,040EE49F.14883506B08ED_gbz9qvhw641ar!FileBackup,,,,,,,
+myHP,101,Taskbar,ALL,AppID,AD2F1837.myHP_v10z8vjag6ke6!App,,,,,,,
+OMEN Command Center,102,Taskbar,ALL,AppID,AD2F1837.OMENCommandCenter_v10z8vjag6ke6!AD2F1837.OMENCommandCenter,,Pavilion Gaming,,,,,
+HP Palette,103,Taskbar,ALL,AppID,AD2F1837.HPPalette_v10z8vjag6ke6!App,,ENVY,,,,,

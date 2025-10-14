@@ -1,0 +1,17 @@
+Name,Order,Size,Region,AppType,Value,ChasisType,BrandName,RegionCode,SKUOptionConfig,ChannelID,FeatureBytes,UID
+HP e-Service,1,2x2,ALL,DtAppLinkPath,,,,,,,,8
+GlamCam,2,2x2,ALL,AppID,AD2F1837.HPGlamCamWidget_v10z8vjag6ke6!App,,,,,,,
+TianYiCloud,3,2x2,ALL,DtAppLinkPath,,,,,,,,6
+e-QR Code,4,2x2,ALL,AppID,AD2F1837.E-QRcode_v10z8vjag6ke6!App,,,,,,,
+WPS Office,5,2x2,ALL,DtAppID,Kingsoft.Office.KPrometheus,,,,,,,
+McAfee,6,2x2,ALL,AppID,5A894077.McAfeeSecurity_wafk5atnkzcwy!App,,,,,,S_Mode,
+McAfee,6,2x2,ALL,DtAppLinkPath,C:\ProgramData\Microsoft\Windows\Start Menu\Programs\McAfee\McAfee LiveSafe.lnk,,,,,,,
+Simple Solitaire,7,2x2,ALL,AppID,26720RandomSaladGamesLLC.3899848563C1F_kx24dqmazqk8j!App,,,,,,,
+myHP,101,Taskbar,ALL,AppID,AD2F1837.myHP_v10z8vjag6ke6!App,,,,,,,
+HPSA,102,Taskbar,ALL,AppID,AD2F1837.HPSupportAssistant_v10z8vjag6ke6!AD2F1837.HPSupportAssistant,,,,,,,
+Xiaowei,103,Taskbar,ALL,AppID,AD2F1837.19285F10D180_v10z8vjag6ke6!App,,,,,,,
+Baidu,1,EdgeFav,ALL,Link,https://js.redirect.hp.com/jumpstation?bd=baidu&c=222&locale=*&pf=*&tp=edge&TYPE=3,,,,,,,
+Agoda.com,2,EdgeFav,ALL,Link,https://js.redirect.hp.com/jumpstation?bd=agoda&c=222&locale=*&pf=*&tp=edge&TYPE=3,,,,,,,
+HP China Website,3,EdgeFav,ALL,Link,https://js.redirect.hp.com/jumpstation?bd=hpch&c=222&locale=*&pf=*&tp=edge&TYPE=3,,,,,,,
+HP China Store,4,EdgeFav,ALL,Link,https://js.redirect.hp.com/jumpstation?bd=hpsh&c=222&locale=*&pf=*&tp=edge&TYPE=3,,,,,,,
+McAfee,5,EdgeFav,ALL,Link,http://www.mcafee.com/consumer/v/browserfav/hp.html,,,,,,,

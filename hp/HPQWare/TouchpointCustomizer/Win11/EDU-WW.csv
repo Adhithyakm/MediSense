@@ -1,0 +1,23 @@
+Name,Order,Size,Region,AppType,Value,ChasisType,BrandName,RegionCode,SKUOptionConfig,ChannelID,FeatureBytes,UID
+MyOffice,1,2x2,ALL,DtAppLinkPath,,,,,,,,4
+Yandex,2,2x2,ALL,DtAppLinkPath,,,,,,,,7
+Amazon.com,3,2x2,ALL,DtAppLinkPath,C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Amazon.com.lnk,,,,ABA;ABJ,,,
+Amazon.com,999,2x2,ALL,DtAppLinkPath,C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Amazon.com.lnk,,,EMEA,ABF;AB9;ABE;ABH,,,
+Amazon.com,3,2x2,ALL,DtAppLinkPath,C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Amazon.com.lnk,,,EMEA,,,,
+Dropbox,999,2x2,ALL,AppID,C27EB4BA.Dropbox_xbfy0k16fey96!App,,,,AB2,,S_Mode,
+Dropbox,4,2x2,ALL,AppID,C27EB4BA.Dropbox_xbfy0k16fey96!App,,,,,,S_Mode,
+Dropbox,999,2x2,ALL,AppID,C27EB4BA.DropboxOEM_xbfy0k16fey96!App,,,,AB2,,,
+Dropbox,4,2x2,ALL,AppID,C27EB4BA.DropboxOEM_xbfy0k16fey96!App,,,,,,,
+HP Prime,5,2x2,ALL,AppID,AD2F1837.HPPrimeGraphingCalculator_v10z8vjag6ke6!AD2F1837.HPPrimeGraphingCalculator,,,,,,,
+Kortext,6,2x2,ALL,AppID,Kortext.Kortext_htp4jyd3mpprc!App,,,,,,,
+HP BULB,7,2x2,ALL,AppID,AD2F1837.bulbDigitalPortfolioforHPSchoolPack_v10z8vjag6ke6!App,,,,,,,
+HP Classroom Manager,8,2x2,ALL,AppID,AD2F1837.HPClassroomManager_v10z8vjag6ke6!NSSClient,,,,,,,
+QuickDrop,9,2x2,ALL,AppID,AD2F1837.HPQuickDrop_v10z8vjag6ke6!App,,,,,,,
+LastPass Password Manager,10,2x2,ALL,DtAppLinkPath,C:\ProgramData\Microsoft\Windows\Start Menu\Programs\LastPass.lnk,,,,,,,
+myHP,101,Taskbar,ALL,AppID,AD2F1837.myHP_v10z8vjag6ke6!App,,,,,,,
+HPSA,102,Taskbar,ALL,AppID,AD2F1837.HPSupportAssistant_v10z8vjag6ke6!AD2F1837.HPSupportAssistant,,,,,,,
+McAfee,103,Taskbar,ALL,AppID,5A894077.McAfeeSecurity_wafk5atnkzcwy!App,,,,,,S_Mode,
+McAfee,103,Taskbar,ALL,DtAppLinkPath,C:\Program Files\McAfee\CoreUI\McAfee LiveSafe.lnk,,,,,,,
+Amazon.com,1,EdgeFav,ALL,Link,http://www.amazon.com/gp/ubp/oneButton/config/redirectHome?tagbase=hpbk-ubpl&ref=aagateway-edgebook-hp,,,,,,,
+McAfee,2,EdgeFav,ALL,Link,http://www.mcafee.com/consumer/v/browserfav/hp.html,,,,,,,
+LastPass,3,EdgeFav,ALL,Link,https://js.redirect.hp.com/jumpstation?bd=lastpass&c=222&locale=*&pf=*&tp=edge&TYPE=3,,,,,,,

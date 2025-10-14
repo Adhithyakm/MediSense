@@ -1,0 +1,17 @@
+Name,Order,Size,Region,AppType,Value,ChasisType,BrandName,RegionCode,SKUOptionConfig,ChannelID,FeatureBytes,UID
+MyOffice,1,2x2,ALL,DtAppLinkPath,,,,,,,,4
+Yandex,2,2x2,ALL,DtAppLinkPath,,,,,,,,7
+HP Prime,3,2x2,ALL,AppID,AD2F1837.HPPrimeGraphingCalculator_v10z8vjag6ke6!AD2F1837.HPPrimeGraphingCalculator,,,,,,,
+Kortext,4,2x2,ALL,AppID,Kortext.Kortext_htp4jyd3mpprc!App,,,,,,,
+HP BULB,5,2x2,ALL,AppID,AD2F1837.bulbDigitalPortfolioforHPSchoolPack_v10z8vjag6ke6!App,,,,,,,
+HP Classroom Manager,6,2x2,ALL,AppID,AD2F1837.HPClassroomManager_v10z8vjag6ke6!NSSClient,,,,,,,
+myHP,7,2x2,ALL,AppID,AD2F1837.myHP_v10z8vjag6ke6!App,,,,,,,
+McAfee,8,2x2,ALL,AppID,5A894077.McAfeeSecurity_wafk5atnkzcwy!App,,,,,,,
+Adobe,9,2x2,ALL,DtAppLinkPath,,,,,,,,1
+LastPass Password Manager,10,2x2,ALL,DtAppLinkPath,C:\ProgramData\Microsoft\Windows\Start Menu\Programs\LastPass.lnk,,,,,,,
+Amazon.com,101,Taskbar,ALL,DtAppLinkPath,C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Amazon.com.lnk,,,,ABA,,,
+Amazon.com,999,Taskbar,ALL,DtAppLinkPath,C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Amazon.com.lnk,,,EMEA,ABF;AB9;ABE;ABH,,,
+Amazon.com,101,Taskbar,ALL,DtAppLinkPath,C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Amazon.com.lnk,,,EMEA,,,,
+Dropbox,999,Taskbar,ALL,AppID,C27EB4BA.DropboxOEM_xbfy0k16fey96!App,,,,AB2,,,
+Dropbox,102,Taskbar,ALL,AppID,C27EB4BA.DropboxOEM_xbfy0k16fey96!App,,,,,,,
+myHP,103,Taskbar,ALL,AppID,AD2F1837.myHP_v10z8vjag6ke6!App,,,,,,,

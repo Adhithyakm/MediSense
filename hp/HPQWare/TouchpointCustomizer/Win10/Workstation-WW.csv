@@ -1,0 +1,16 @@
+Name,Order,Size,Region,AppType,Value,ChasisType,BrandName,RegionCode,SKUOptionConfig,ChannelID,FeatureBytes,UID
+MyOffice,1,2x2,ALL,DtAppLinkPath,,,,,,,,4
+Yandex,2,2x2,ALL,DtAppLinkPath,,,,,,,,7
+myHP,3,2x2,ALL,AppID,AD2F1837.myHP_v10z8vjag6ke6!App,,,,,,,
+Adobe,4,2x2,ALL,DtAppLinkPath,,,,,,,,1
+Simple Solitaire,5,2x2,ALL,AppID,26720RandomSaladGamesLLC.3899848563C1F_kx24dqmazqk8j!App,,,,,,,
+LastPass Password Manager,6,2x2,ALL,DtAppLinkPath,C:\ProgramData\Microsoft\Windows\Start Menu\Programs\LastPass.lnk,,,,,,,
+Express VPN,7,2x2,ALL,DtAppLinkPath,C:\ProgramData\Microsoft\Windows\Start Menu\Programs\ExpressVPN.lnk,,,,,,,
+HP Performance Advisor,8,2x2,ALL,DtAppID,{7C5A40EF-A0FB-4BFC-874A-C0F2E0B9FA8E}\HP\HP Performance Advisor\Advisor.exe,,,,,,,
+HP Performance Advisor,8,2x2,ALL,DtAppLinkPath,C:\ProgramData\Microsoft\Windows\Start Menu\Programs\HP\HP Performance Advisor.lnk,,,,,,,
+HP ZCentral Remote Boost,9,2x2,ALL,DtAppLinkPath,C:\ProgramData\Microsoft\Windows\Start Menu\Programs\HP ZCentral Remote Boost.lnk,,,,,,,
+QuickDrop,51,1x1,ALL,AppID,AD2F1837.HPQuickDrop_v10z8vjag6ke6!App,,,,,,,
+Dropbox,101,Taskbar,ALL,AppID,C27EB4BA.DropboxOEM_xbfy0k16fey96!App,,,,,,,
+myHP,102,Taskbar,ALL,AppID,AD2F1837.myHP_v10z8vjag6ke6!App,,,,,,,
+ExpressVPN,1,EdgeFav,ALL,Link,http://js.redirect.hp.com/jumpstation?bd=expressvpn&c=*&locale=en_us&pf=*&s=*&tp=edge,,,,,,,
+LastPass,2,EdgeFav,ALL,Link,http://js.redirect.hp.com/jumpstation?bd=lastpass&c=*&locale=*&pf=*&s=*&tp=edge,,,,,,,

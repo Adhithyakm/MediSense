@@ -1,0 +1,101 @@
+﻿[CVA File Information]
+CVATimeStamp=20220802T034342
+CVASyntaxVersion=2.1A9
+
+[Software Title]
+US=Realtek Local Area Network (LAN) Driver
+
+[US.Software Description]
+This package provides the Realtek Local Area Network (LAN) Driver that enables the Realtek Network Interface Card (NIC) Chip in supported computer models that are running a supported operating system.
+
+[General]
+PN=P011YG-B2D
+Version=1168.8.515.2022
+Revision=D
+Pass=2
+Type=Driver
+Category=Driver - Network
+TargetPartition=
+SystemMustBeRebooted=0
+VendorName=REALTEK
+VendorVersion=1168.8.515.2022
+
+[SupportedLanguages]
+Languages=GLOBAL
+Countries=GBL
+
+[ProfessionalInnovations]
+HPPI=No
+LearnMore=
+
+[Softpaq]
+SoftpaqNumber=
+SupersededSoftpaqNumber=
+SoftPaqMD5=
+
+[DetailFileInformation]
+rt68cx21x64.sys=<WINSYSDIR>\drivers,0x0490,0x0008,0x0203,0x07E6,W11
+
+[Devices_INFPath]
+W11_INFPath=src\dchu_lan
+
+[Devices]
+PCI\VEN_10EC&DEV_8168="Realtek Gaming GbE Family Controller"
+PCI\VEN_10EC&DEV_8168&SUBSYS_8A3C103C="Realtek Gaming GbE Family Controller"
+PCI\VEN_10EC&DEV_8168&SUBSYS_8A3D103C="Realtek Gaming GbE Family Controller"
+PCI\VEN_10EC&DEV_8168&SUBSYS_8A3E103C="Realtek Gaming GbE Family Controller"
+PCI\VEN_10EC&DEV_8168&SUBSYS_8A3F103C="Realtek Gaming GbE Family Controller"
+
+[System Information]
+SysId01=0x8A3C
+SysName01=Victus by HP 15.6 inch Gaming Laptop PC
+SysId02=0x8A3D
+SysName02=Victus by HP 15.6 inch Gaming Laptop PC
+SysId03=0x8A3E
+SysName03=Victus by HP 15.6 inch Gaming Laptop PC
+SysId04=0x8A3F
+SysName04=Victus by HP 15.6 inch Gaming Laptop PC
+
+[Operating Systems]
+W11=OEM
+
+[ReturnCode]
+14:SUCCESS:REBOOT= A restart is required to complete the install.
+0:SUCCESS:NOREBOOT=The action completed successfully.
+3010:SUCCESS:REBOOT=A restart is required to complete the install. This message is indicative of a success.
+1641:SUCCESS:NOREBOOT=The installer has initiated a restart. This message is indicative of a success.
+13:SUCCESS:NOREBOOT=The data is invalid.
+87:SUCCESS:NOREBOOT=One of the parameters was invalid.
+259:SUCCESS:NOREBOOT=An error occurred during installation.
+1601:SUCCESS:NOREBOOT=The Windows Installer service could not be accessed.
+1602:CANCEL:NOREBOOT=The user cancels installation.
+1603:FAILURE:NOREBOOT=A fatal error occurred during installation.
+1604:FAILURE:NOREBOOT=Installation suspended, incomplete.
+1612:FAILURE:NOREBOOT=The installation source for this product is not available.
+1613:FAILURE:NOREBOOT=This installation package cannot be installed by the Windows Installer service.
+1618:CANCEL:NOREBOOT=Another installation is already in progress. Complete that installation before proceeding with this install.
+1619:FAILURE:NOREBOOT=This installation package could not be opened.
+1620:FAILURE:NOREBOOT=This installation package could not be opened.
+1621:FAILURE:NOREBOOT=There was an error starting the Windows Installer service user interface. Contact your support personnel.
+1622:FAILURE:NOREBOOT=There was an error opening installation log file. Verify that the specified log file location exists and is writable.
+1623:FAILURE:NOREBOOT=This language of this installation package is not supported by your system.
+1624:FAILURE:NOREBOOT=There was an error applying transforms. Verify that the specified transform paths are valid.
+1631:FAILURE:NOREBOOT=The Windows Installer service failed to start. Contact your support personnel.
+1632:FAILURE:NOREBOOT=The Temp folder is either full or inaccessible. Verify that the Temp folder exists and that you can write to it.
+1633:FAILURE:NOREBOOT=This installation package is not supported on this platform. Contact your application vendor.
+1634:CANCEL:NOREBOOT=Component is not used on this machine.
+1638:CANCEL:NOREBOOT=Another version of this product is already installed. Installation of this version cannot continue.
+1639:FAILURE:NOREBOOT=Invalid command line argument.
+
+[Install Execution]
+Install="install.cmd"
+SilentInstall="install.cmd"
+
+[Private]
+Private_SSMCompliant=1
+DPB_Compliant=0
+
+[CVAToolDocumentStamp]
+Generate By CVA Tool V1.0.0.0; Spec V2.1 A9 on 8/2/2022 3:43:42 AM
+Copyright © 2022 HP Development Company, L.P.
+

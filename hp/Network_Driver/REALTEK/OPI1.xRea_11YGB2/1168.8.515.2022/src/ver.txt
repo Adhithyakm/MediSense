@@ -1,0 +1,4 @@
+Package: Install_PCIE_Win11_11.8.0515.2022_06222022 (PW=1234).7z
+NIC Driver version :
+Win11
+i.   rt68<>.sys :    1168.008.0515.2022
