@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'home_screen.dart';
-
+import 'review_submit_screen.dart';
 class ReportSymptomsScreen extends StatefulWidget {
   const ReportSymptomsScreen({Key? key}) : super(key: key);
 
@@ -42,7 +42,9 @@ class _ReportSymptomsScreenState extends State<ReportSymptomsScreen> {
 
   void _submitReport() {
     String symptomToSave =
-    _selectedSymptom == 'Other' ? _otherSymptomController.text.trim() : _selectedSymptom ?? '';
+    _selectedSymptom == 'Other'
+        ? _otherSymptomController.text.trim()
+        : _selectedSymptom ?? '';
 
     if (symptomToSave.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -51,12 +53,21 @@ class _ReportSymptomsScreenState extends State<ReportSymptomsScreen> {
       return;
     }
 
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text("Symptom '$symptomToSave' submitted successfully!"),
+    String description = _descriptionController.text.trim();
+    String location = "Sreekrishnapuram, Palakkad District";
+
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => ReviewSubmitScreen(
+          symptoms: symptomToSave,
+          description: description,
+          location: location,
+        ),
       ),
     );
   }
+
 
   @override
   Widget build(BuildContext context) {

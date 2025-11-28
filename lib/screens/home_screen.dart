@@ -5,7 +5,7 @@ import 'econsultation_screen.dart';
 import 'map_screen.dart';
 import 'tasks_screen.dart';
 import 'profile_screen.dart';
-
+import 'notifications_page.dart';
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -19,7 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final List<Widget> _pages = [
     const HomeContent(),
     const MapScreen(),
-    const TasksScreen(),
+    TasksScreen(),
     const SetupProfileScreen(),
   ];
 
@@ -88,7 +88,16 @@ class HomeContent extends StatelessWidget {
                     ),
                   ],
                 ),
-                const Icon(Icons.notifications_outlined, size: 26),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const NotificationsPage()),
+                    );
+                  },
+                  child: const Icon(Icons.notifications_outlined, size: 26),
+                ),
+
               ],
             ),
             const SizedBox(height: 20),
