@@ -88,7 +88,7 @@ class _LoginScreenState extends State<LoginScreen> {
   bool showPassword = false;
 
   Future<void> login() async {
-    final url = Uri.parse('http://localhost:8000/api/userauth/login/');
+    final url = Uri.parse('http://localhost:8080/api/userauth/login/');
     final response = await http.post(
       url,
       headers: {'Content-Type': 'application/json'},
