@@ -2,7 +2,8 @@ from django.contrib.auth import authenticate, get_user_model
 from rest_framework import serializers, views
 from rest_framework.response import Response
 from rest_framework.authtoken.models import Token
-
+# 🛑 IMPORT AllowAny
+from rest_framework.permissions import AllowAny
 
 
 class LoginSerializer(serializers.Serializer):
@@ -31,6 +32,8 @@ class LoginSerializer(serializers.Serializer):
 
 class LoginView(views.APIView):
     serializer_class = LoginSerializer
+    # 🛑 FIX: Explicitly allow access to unauthenticated users
+    permission_classes = [AllowAny]
 
     def post(self, request, *args, **kwargs):
         serializer = self.serializer_class(data=request.data)
@@ -38,6 +41,5 @@ class LoginView(views.APIView):
         user = serializer.validated_data['user']
         token, _ = Token.objects.get_or_create(user=user)
         return Response({'token': token.key})
-from django.shortcuts import render
-
+# from django.shortcuts import render
 # Create your views here.
