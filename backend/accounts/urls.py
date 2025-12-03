@@ -1,8 +1,12 @@
+# accounts/urls.py - FINAL CORRECTED VERSION
+
 from django.urls import path
-from .views import RegisterView, ProfileUpdateView
+# 🛑 Change the imported name from ProfileUpdateView to ProfileView 🛑
+from .views import RegisterView, ProfileView
 
 
 urlpatterns = [
     path('register/', RegisterView.as_view(), name='register'),
-    path('profile/', ProfileUpdateView.as_view(), name='profile'),
+    # 🛑 Change the view used in the path to ProfileView 🛑
+    path('profile/', ProfileView.as_view(), name='profile'),
 ]
