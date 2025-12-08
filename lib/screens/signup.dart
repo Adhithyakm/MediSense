@@ -124,7 +124,7 @@ class _SignUpPageState extends State<SignUpPage> {
    });
    return;
   }
-  final url = Uri.parse('http://localhost:8080/api/accounts/register/');
+  final url = Uri.parse('http://10.69.161.158:8080/api/accounts/register/');
   final response = await http.post(
    url,
    headers: {'Content-Type': 'application/json'},
