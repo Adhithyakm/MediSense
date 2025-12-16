@@ -1,78 +1,153 @@
 import 'package:flutter/material.dart';
-import 'home_screen.dart';
-import 'review_submit_screen.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:geocoding/geocoding.dart';
+import 'review_submit_screen.dart'; // Make sure this file exists
+
 class ReportSymptomsScreen extends StatefulWidget {
-  const ReportSymptomsScreen({Key? key}) : super(key: key);
+  // Receive the city from Home Screen
+  final String selectedCity;
+
+  const ReportSymptomsScreen({
+    Key? key,
+    this.selectedCity = "Unknown Location", // Default fallback
+  }) : super(key: key);
 
   @override
   State<ReportSymptomsScreen> createState() => _ReportSymptomsScreenState();
 }
 
 class _ReportSymptomsScreenState extends State<ReportSymptomsScreen> {
+  // Controllers for text input
   final TextEditingController _descriptionController = TextEditingController();
   final TextEditingController _otherSymptomController = TextEditingController();
 
-  String? _selectedSymptom;
-  final List<String> _symptoms = ['Cough', 'Fever', 'Headache', 'Other'];
+  // State variables
+  late String _currentLocation;
+  bool _isFetchingLocation = false;
 
-  int _selectedIndex = 0;
+  // Symptom Data
+  final List<String> _selectedSymptoms = [];
+  final List<String> _availableSymptoms = [
+    'Fever',
+    'Cough',
+    'Headache',
+    'Nausea',
+    'Skin Rash',
+    'Fatigue',
+    'Breathing Issues',
+    'Other'
+  ];
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-    switch (index) {
-      case 0:
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => const HomeScreen()),
-        );
-        break;
-      case 1:
-      // Navigate to Map
-        break;
-      case 2:
-      // Navigate to Tasks
-        break;
-      case 3:
-      // Navigate to Profile
-        break;
-    }
+  @override
+  void initState() {
+    super.initState();
+    // Initialize location with the data passed from HomeScreen
+    _currentLocation = widget.selectedCity;
   }
 
-  void _submitReport() {
-    String symptomToSave =
-    _selectedSymptom == 'Other'
-        ? _otherSymptomController.text.trim()
-        : _selectedSymptom ?? '';
+  // --- 1. LOGIC: GET PRECISE GPS LOCATION ---
+  Future<void> _fetchPreciseLocation() async {
+    setState(() {
+      _isFetchingLocation = true;
+    });
 
-    if (symptomToSave.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Please select or enter a symptom.")),
-      );
+    bool serviceEnabled;
+    LocationPermission permission;
+
+    // Check if GPS is on
+    serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      _showSnackBar("Please enable Location services on your phone.");
+      setState(() => _isFetchingLocation = false);
       return;
     }
 
-    String description = _descriptionController.text.trim();
-    String location = "Sreekrishnapuram, Palakkad District";
+    // Check Permissions
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        _showSnackBar("Permission denied. Using City default.");
+        setState(() => _isFetchingLocation = false);
+        return;
+      }
+    }
 
+    if (permission == LocationPermission.deniedForever) {
+      _showSnackBar("Location permanently denied. Check Settings.");
+      setState(() => _isFetchingLocation = false);
+      return;
+    }
+
+    try {
+      // Get Coordinates
+      Position position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high,
+      );
+
+      // Convert to Address
+      List<Placemark> placemarks = await placemarkFromCoordinates(
+        position.latitude,
+        position.longitude,
+      );
+
+      if (placemarks.isNotEmpty) {
+        Placemark place = placemarks[0];
+        setState(() {
+          // Format: "Street, SubLocality, Locality"
+          // Example: "Main Market Rd, Sreekrishnapuram, Palakkad"
+          _currentLocation = "${place.street}, ${place.subLocality}, ${place.locality}";
+          _isFetchingLocation = false;
+        });
+        _showSnackBar("Updated to precise location!");
+      }
+    } catch (e) {
+      _showSnackBar("Error fetching GPS. Using City default.");
+      setState(() => _isFetchingLocation = false);
+    }
+  }
+
+  void _showSnackBar(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
+  }
+
+  // --- 2. LOGIC: SUBMIT DATA ---
+  void _submitReport() {
+    // Combine selected chips
+    List<String> finalSymptoms = List.from(_selectedSymptoms);
+
+    // Handle "Other" logic
+    if (_selectedSymptoms.contains('Other')) {
+      finalSymptoms.remove('Other'); // Remove the label "Other"
+      if (_otherSymptomController.text.isNotEmpty) {
+        finalSymptoms.add(_otherSymptomController.text.trim()); // Add the typed text
+      }
+    }
+
+    // Validation
+    if (finalSymptoms.isEmpty) {
+      _showSnackBar("Please select at least one symptom.");
+      return;
+    }
+
+    // Navigate to Review Screen
     Navigator.push(
       context,
       MaterialPageRoute(
         builder: (context) => ReviewSubmitScreen(
-          symptoms: symptomToSave,
-          description: description,
-          location: location,
+          symptoms: finalSymptoms.join(", "), // Converts list to "Fever, Cough"
+          description: _descriptionController.text.trim(),
+          location: _currentLocation, // Passes the final location (City or GPS)
         ),
       ),
     );
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      // Top App Bar
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.white,
@@ -92,44 +167,76 @@ class _ReportSymptomsScreenState extends State<ReportSymptomsScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Dropdown
+            // --- PRIVACY BANNER (For Abstract) ---
             Container(
-              padding: const EdgeInsets.symmetric(horizontal: 12),
+              padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
-                border: Border.all(color: const Color(0xFF30B1D2), width: 1),
-                borderRadius: BorderRadius.circular(10),
+                color: const Color(0xFFE8F5E9), // Light Green
+                borderRadius: BorderRadius.circular(8),
+                border: Border.all(color: Colors.green.withOpacity(0.3)),
               ),
-              child: DropdownButtonHideUnderline(
-                child: DropdownButton<String>(
-                  hint: const Text("Select Symptoms",
-                      style: TextStyle(color: Colors.grey)),
-                  value: _selectedSymptom,
-                  isExpanded: true,
-                  items: _symptoms.map((String symptom) {
-                    return DropdownMenuItem<String>(
-                      value: symptom,
-                      child: Text(symptom),
-                    );
-                  }).toList(),
-                  onChanged: (value) {
-                    setState(() {
-                      _selectedSymptom = value;
-                    });
-                  },
-                ),
+              child: Row(
+                children: const [
+                  Icon(Icons.security, color: Colors.green, size: 20),
+                  SizedBox(width: 10),
+                  Expanded(
+                    child: Text(
+                      "Data is anonymized. Your identity is hidden to protect privacy.",
+                      style: TextStyle(fontSize: 12, color: Colors.green, fontWeight: FontWeight.w600),
+                    ),
+                  ),
+                ],
               ),
             ),
+            const SizedBox(height: 25),
 
-            // "Other symptom" field appears dynamically
-            if (_selectedSymptom == 'Other') ...[
+            // --- SYMPTOM SELECTOR ---
+            const Text(
+              "Select all that apply:",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+            ),
+            const SizedBox(height: 10),
+
+            Wrap(
+              spacing: 8.0,
+              runSpacing: 8.0,
+              children: _availableSymptoms.map((symptom) {
+                final bool isSelected = _selectedSymptoms.contains(symptom);
+                return FilterChip(
+                  label: Text(symptom),
+                  selected: isSelected,
+                  // Color Styling
+                  selectedColor: const Color(0xFF30B1D2).withOpacity(0.2),
+                  checkmarkColor: const Color(0xFF30B1D2),
+                  labelStyle: TextStyle(
+                    color: isSelected ? const Color(0xFF30B1D2) : Colors.black87,
+                    fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
+                  ),
+                  backgroundColor: Colors.grey[100],
+                  onSelected: (bool selected) {
+                    setState(() {
+                      if (selected) {
+                        _selectedSymptoms.add(symptom);
+                      } else {
+                        _selectedSymptoms.remove(symptom);
+                      }
+                    });
+                  },
+                );
+              }).toList(),
+            ),
+
+            // "Other" Text Field (Conditional)
+            if (_selectedSymptoms.contains('Other')) ...[
               const SizedBox(height: 15),
               TextField(
                 controller: _otherSymptomController,
                 decoration: InputDecoration(
-                  labelText: "Enter other symptom",
+                  labelText: "Please specify other symptom",
+                  isDense: true,
                   border: OutlineInputBorder(
-                    borderSide: const BorderSide(color: Color(0xFF30B1D2)),
                     borderRadius: BorderRadius.circular(10),
+                    borderSide: const BorderSide(color: Color(0xFF30B1D2)),
                   ),
                 ),
               ),
@@ -137,77 +244,74 @@ class _ReportSymptomsScreenState extends State<ReportSymptomsScreen> {
 
             const SizedBox(height: 25),
 
-            // Description box
-            Container(
-              decoration: BoxDecoration(
-                border: Border.all(color: const Color(0xFF30B1D2)),
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: TextField(
-                controller: _descriptionController,
-                maxLines: 5,
-                maxLength: 250,
-                decoration: const InputDecoration(
-                  hintText: "Brief Description",
-                  counterText: "Limit 250",
-                  border: InputBorder.none,
-                  contentPadding: EdgeInsets.symmetric(
-                    vertical: 15,
-                    horizontal: 15,
-                  ),
-                ),
-              ),
-            ),
-            const SizedBox(height: 25),
-
-            // Location
+            // --- LOCATION SECTION (Hybrid) ---
             const Text(
-              "Confirm Location",
-              style: TextStyle(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 16,
-                  color: Colors.black),
-            ),
-            const SizedBox(height: 10),
-            Row(
-              children: const [
-                Icon(Icons.location_on, color: Color(0xFF30B1D2)),
-                SizedBox(width: 8),
-                Expanded(
-                  child: Text(
-                    "Sreekrishnapuram, Palakkad District",
-                    style: TextStyle(fontSize: 15),
-                  ),
-                ),
-              ],
+              "Location of Incident",
+              style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
             ),
             const SizedBox(height: 10),
 
-            Align(
-              alignment: Alignment.centerLeft,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF30B1D2),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+              decoration: BoxDecoration(
+                color: Colors.grey[50],
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(color: Colors.grey.shade300),
+              ),
+              child: Row(
+                children: [
+                  const Icon(Icons.location_on, color: Color(0xFF30B1D2)),
+                  const SizedBox(width: 10),
+
+                  // Location Text
+                  Expanded(
+                    child: Text(
+                      _currentLocation,
+                      style: const TextStyle(fontSize: 15, color: Colors.black87),
+                    ),
                   ),
-                  padding:
-                  const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-                ),
-                onPressed: () {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text("Change Location tapped")),
-                  );
-                },
-                child: const Text(
-                  "Change Location",
-                  style: TextStyle(color: Colors.white),
-                ),
+
+                  // GPS Button
+                  _isFetchingLocation
+                      ? const SizedBox(
+                      width: 20, height: 20,
+                      child: CircularProgressIndicator(strokeWidth: 2, color: Color(0xFF30B1D2))
+                  )
+                      : IconButton(
+                    icon: const Icon(Icons.my_location, color: Colors.grey),
+                    tooltip: "Use Precise GPS",
+                    onPressed: _fetchPreciseLocation,
+                  ),
+                ],
               ),
             ),
+
+            Padding(
+              padding: const EdgeInsets.only(left: 4, top: 5),
+              child: Text(
+                "Tip: Uses selected city by default. Tap target icon for exact street location.",
+                style: TextStyle(fontSize: 11, color: Colors.grey[600]),
+              ),
+            ),
+
             const SizedBox(height: 25),
 
-            // Submit Button
+            // --- DESCRIPTION ---
+            const Text("Additional Details (Optional)",
+                style: TextStyle(fontWeight: FontWeight.w600)),
+            const SizedBox(height: 8),
+            TextField(
+              controller: _descriptionController,
+              maxLines: 3,
+              decoration: InputDecoration(
+                hintText: "e.g., Duration, severity...",
+                border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+              ),
+            ),
+
+            const SizedBox(height: 30),
+
+            // --- SUBMIT BUTTON ---
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
@@ -218,34 +322,21 @@ class _ReportSymptomsScreenState extends State<ReportSymptomsScreen> {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
+                  elevation: 2,
                 ),
                 child: const Text(
-                  "Save and Submit",
+                  "Review & Submit",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 17,
-                    fontWeight: FontWeight.w500,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
               ),
             ),
+            const SizedBox(height: 20),
           ],
         ),
-      ),
-
-      // Bottom Navigation
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
-        type: BottomNavigationBarType.fixed,
-        selectedItemColor: const Color(0xFF30B1D2),
-        unselectedItemColor: Colors.black,
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home_outlined), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.location_on_outlined), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.assignment_outlined), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.person_outline), label: ''),
-        ],
       ),
     );
   }

@@ -12,6 +12,7 @@ import 'tasks_screen.dart';
 import 'profile_screen.dart';
 import 'notifications_page.dart';
 import 'login_screen.dart';
+import 'select_city_screen.dart'; // Import this so we can navigate back if needed
 import '../services/locationservices.dart';
 
 // ====================================================================
@@ -61,6 +62,7 @@ class UserProvider with ChangeNotifier {
         return;
       }
 
+      // Make sure this IP matches your SelectCityScreen IP!
       final url = Uri.parse("http://10.69.161.158:8080/api/accounts/profile/");
       final response = await http.get(url, headers: {
         "Content-Type": "application/json",
@@ -146,7 +148,7 @@ class _HomeScreenState extends State<HomeScreen> {
 }
 
 // ====================================================================
-// HOME CONTENT
+// HOME CONTENT (UPDATED LOGIC HERE)
 // ====================================================================
 class HomeContent extends StatefulWidget {
   const HomeContent({Key? key}) : super(key: key);
@@ -161,14 +163,29 @@ class _HomeContentState extends State<HomeContent> {
   @override
   void initState() {
     super.initState();
-    detectLocation();
+    loadLocation();
   }
 
-  void detectLocation() async {
-    String? detectedCity = await getDetectedLocality();
-    setState(() {
-      city = detectedCity ?? "Unknown";
-    });
+  // --- UPDATED LOCATION LOGIC ---
+  void loadLocation() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    // 1. Try to get the Manual Selection (from SelectCityScreen)
+    String? manualLocalBody = prefs.getString('selectedLocalBody');
+    String? manualDistrict = prefs.getString('selectedDistrict');
+
+    if (manualLocalBody != null && manualDistrict != null) {
+      // If user selected a city manually, show that!
+      setState(() {
+        city = "$manualLocalBody, $manualDistrict";
+      });
+    } else {
+      // 2. If no manual selection, try Auto-Detect (GPS)
+      String? detectedCity = await getDetectedLocality();
+      setState(() {
+        city = detectedCity ?? "Unknown Location";
+      });
+    }
   }
 
   @override
@@ -187,33 +204,45 @@ class _HomeContentState extends State<HomeContent> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Row(
-                    children: [
-                      GestureDetector(
-                        onTap: () => Scaffold.of(context).openDrawer(),
-                        child: const Icon(Icons.menu, size: 28),
-                      ),
-                      const SizedBox(width: 8),
-                      Text(
-                        "${city ?? 'Detecting...'} ▼",
-                        style: const TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w500,
+                  // LOCATION DROPDOWN
+                  GestureDetector(
+                    // Allow clicking to change city manually again
+                    onTap: () {
+                      Navigator.push(context, MaterialPageRoute(
+                        builder: (context) => const SelectCityScreen(),
+                      ));
+                    },
+                    child: Row(
+                      children: [
+                        const Icon(Icons.location_on, color: Color(0xFF30B1D2), size: 24),
+                        const SizedBox(width: 8),
+                        Text(
+                          // Show the loaded city name here
+                          city != null && city!.length > 25
+                              ? "${city!.substring(0, 22)}..." // Truncate if too long
+                              : "${city ?? 'Detecting...'} ▼",
+                          style: const TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.black87
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
+
+                  // NOTIFICATION ICON
                   GestureDetector(
                     onTap: () {
                       Navigator.push(context, MaterialPageRoute(
                         builder: (context) => const NotificationsPage(),
                       ));
                     },
-                    child: const Icon(Icons.notifications_outlined, size: 26),
+                    child: const Icon(Icons.notifications_outlined, size: 28),
                   ),
                 ],
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 25),
 
               // Greeting
               Text(
@@ -230,17 +259,23 @@ class _HomeContentState extends State<HomeContent> {
               ),
               const SizedBox(height: 30),
 
-              // Option Buttons
+              // --- BUTTON 1: REPORT SYMPTOMS ---
               OptionButton(
                 icon: Icons.add_circle_outline,
                 label: "Report Symptoms",
                 onTap: () {
+                  // Pass the loaded city to the Symptoms Screen
                   Navigator.push(context, MaterialPageRoute(
-                    builder: (context) => const ReportSymptomsScreen(),
+                    builder: (context) => ReportSymptomsScreen(
+                      selectedCity: city ?? "Locating...",
+                    ),
                   ));
                 },
               ),
+
               const SizedBox(height: 20),
+
+              // --- BUTTON 2: REPORT RISK ---
               OptionButton(
                 icon: Icons.warning_amber_rounded,
                 label: "Report A Community Risk",
@@ -250,7 +285,10 @@ class _HomeContentState extends State<HomeContent> {
                   ));
                 },
               ),
+
               const SizedBox(height: 20),
+
+              // --- BUTTON 3: CONSULTATION ---
               OptionButton(
                 icon: Icons.medication_outlined,
                 label: "eConsultation",
@@ -293,8 +331,15 @@ class OptionButton extends StatelessWidget {
         width: double.infinity,
         padding: const EdgeInsets.symmetric(vertical: 22),
         decoration: BoxDecoration(
-          color: const Color(0xFF30B1D2),
-          borderRadius: BorderRadius.circular(16),
+            color: const Color(0xFF30B1D2),
+            borderRadius: BorderRadius.circular(16),
+            boxShadow: [
+              BoxShadow(
+                  color: Colors.grey.withOpacity(0.1),
+                  blurRadius: 10,
+                  offset: const Offset(0, 5)
+              )
+            ]
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,

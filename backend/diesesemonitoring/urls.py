@@ -21,7 +21,9 @@ urlpatterns = [
 
     path('admin/', admin.site.urls),
     path('api/accounts/', include('accounts.urls')),   # Sign up (register) routes
-    path('api/userauth/', include('userauth.urls')),   # Login routes
+    path('api/userauth/', include('userauth.urls')),
+    path('api/reports_api/', include('reports_api.urls')),
+   # Login routes
 ]
 
 """path('dj-rest-auth/', include('dj_rest_auth.urls')),

@@ -4,7 +4,8 @@ Django settings for diesesemonitoring project.
 """
 
 from pathlib import Path
-
+import dj_database_url  # <--- ADD THIS LINE HERE
+import os               # Good practice to add this too
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -19,7 +20,7 @@ SECRET_KEY = 'django-insecure-+!0xs^s6d2^z6o-(67#lnc@v7b(6+crf+d3xe&2a!=(ruo$irr
 DEBUG = True
 
 
-ALLOWED_HOSTS = ['10.102.5.158', 'localhost', '127.0.0.1','10.69.161.158']
+ALLOWED_HOSTS = ['10.102.5.158', 'localhost', '127.0.0.1','10.69.161.158','10.111.213.158','10.74.153.158']
 
 
 # Application definition
@@ -38,6 +39,7 @@ INSTALLED_APPS = [
 
     'accounts',
     'userauth',
+    'reports_api'
 ]
 
 # ==========================================================
@@ -112,16 +114,13 @@ WSGI_APPLICATION = 'diesesemonitoring.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'disease_moniter',
-        'USER':'postgres',
-        'PASSWORD': 'anjana@04',
-        'HOST':'localhost',
-        'PORT':'5432'
+# Database
+# https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-    }
+DATABASES = {
+    'default': dj_database_url.parse(
+        'postgresql://neondb_owner:npg_XplWZx4inE7L@ep-divine-tree-adtxgd4q-pooler.c-2.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require'
+    )
 }
 
 
