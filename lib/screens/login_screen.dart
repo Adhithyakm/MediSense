@@ -3,8 +3,8 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'signup.dart';
-import 'select_city_screen.dart';
-//import 'home_screen.dart';
+//import 'select_city_screen.dart';
+import 'home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -23,7 +23,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Future<void> login() async {
     setState(() => isLoading = true);
 
-    final url = Uri.parse('http://10.69.161.158:8080/api/userauth/login/');
+    final url = Uri.parse('http://192.168.137.1:8000/api/userauth/login/');
 
     try {
       final response = await http.post(
@@ -51,9 +51,13 @@ class _LoginScreenState extends State<LoginScreen> {
             loginMessage = 'Login successful';
           });
 
+          //Navigator.pushReplacement(
+           // context,
+           // MaterialPageRoute(builder: (context) => const SelectCityScreen()),
+         // );
           Navigator.pushReplacement(
             context,
-            MaterialPageRoute(builder: (context) => const SelectCityScreen()),
+            MaterialPageRoute(builder: (context) => const HomeScreen()),
           );
         } else {
           setState(() {

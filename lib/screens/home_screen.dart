@@ -63,7 +63,7 @@ class UserProvider with ChangeNotifier {
       }
 
       // Make sure this IP matches your SelectCityScreen IP!
-      final url = Uri.parse("http://10.69.161.158:8080/api/accounts/profile/");
+      final url = Uri.parse("http://192.168.137.1:8000/api/accounts/profile/");
       final response = await http.get(url, headers: {
         "Content-Type": "application/json",
         "Authorization": "Token $token",

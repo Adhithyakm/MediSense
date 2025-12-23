@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
-
+import 'select_city_screen.dart';
 class SetupProfileScreen extends StatefulWidget {
   const SetupProfileScreen({super.key});
 
@@ -199,7 +199,7 @@ class _SetupProfileScreenState extends State<SetupProfileScreen> {
       return;
     }
 
-    final url = Uri.parse("http://10.69.161.158:8080/api/accounts/profile/");
+    final url = Uri.parse("http://192.168.137.1:8000/api/accounts/profile/");
 
     print("Sending request with Token: $token");
 
@@ -225,6 +225,11 @@ class _SetupProfileScreenState extends State<SetupProfileScreen> {
         setState(() {
           profileMessage = "Profile updated successfully!";
         });
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const SelectCityScreen()),
+        );
+
       } else {
         print("Error Response: ${response.body}");
         String errorDetail = "Failed to update profile.";

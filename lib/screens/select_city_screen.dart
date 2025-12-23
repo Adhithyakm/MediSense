@@ -45,7 +45,7 @@ class _SelectCityScreenState extends State<SelectCityScreen> {
     'Palakkad': 'lib/assets/palakkad.png',
   };
 
-  final String baseUrl = "http://10.69.161.158:8080/api/reports_api";
+  final String baseUrl = "http://192.168.137.1:8000/api/reports_api";
   final Dio _dio = Dio();
 
   @override

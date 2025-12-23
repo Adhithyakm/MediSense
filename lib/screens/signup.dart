@@ -101,6 +101,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'login_screen.dart';
 import 'home_screen.dart';
+import 'profile_screen.dart';
 
 class SignUpPage extends StatefulWidget {
  @override
@@ -124,7 +125,7 @@ class _SignUpPageState extends State<SignUpPage> {
    });
    return;
   }
-  final url = Uri.parse('http://10.69.161.158:8080/api/accounts/register/');
+  final url = Uri.parse('http://192.168.137.1:8000/api/accounts/register/');
   final response = await http.post(
    url,
    headers: {'Content-Type': 'application/json'},
@@ -142,7 +143,7 @@ class _SignUpPageState extends State<SignUpPage> {
    });
 
    // Optionally, clear fields or navigate to login
-   // Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => LoginScreen()));
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => SetupProfileScreen()));
   } else {
    String errMsg = "Registration failed.";
    try {
