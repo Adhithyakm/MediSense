@@ -16,15 +16,22 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings # Add this
+from django.conf.urls.static import static # Add this
 
 urlpatterns = [
-
     path('admin/', admin.site.urls),
-    path('api/accounts/', include('accounts.urls')),   # Sign up (register) routes
+    path('api/accounts/', include('accounts.urls')),
     path('api/userauth/', include('userauth.urls')),
+
+    # 🟢 ENSURE THIS STARTS WITH api/ AND ENDS WITH /
     path('api/reports_api/', include('reports_api.urls')),
-   # Login routes
 ]
+
+
+# CRITICAL: This allows the Health Official to view the uploaded risk photos
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 """path('dj-rest-auth/', include('dj_rest_auth.urls')),
     path('dj-rest-auth/registration/', include('dj_rest_auth.registration.urls')),

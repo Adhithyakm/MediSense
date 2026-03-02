@@ -63,7 +63,7 @@ class UserProvider with ChangeNotifier {
       }
 
       // Make sure this IP matches your SelectCityScreen IP!
-      final url = Uri.parse("http://192.168.137.1:8000/api/accounts/profile/");
+      final url = Uri.parse("http://192.168.24.71:8080/api/accounts/profile/");
       final response = await http.get(url, headers: {
         "Content-Type": "application/json",
         "Authorization": "Token $token",
@@ -281,8 +281,9 @@ class _HomeContentState extends State<HomeContent> {
                 label: "Report A Community Risk",
                 onTap: () {
                   Navigator.push(context, MaterialPageRoute(
-                    builder: (context) => ReportCommunityRiskScreen(),
-                  ));
+                    builder: (context) => ReportRiskScreen(
+                      selectedCity: city ?? "Locating...",
+                    ),));
                 },
               ),
 
@@ -291,7 +292,7 @@ class _HomeContentState extends State<HomeContent> {
               // --- BUTTON 3: CONSULTATION ---
               OptionButton(
                 icon: Icons.medication_outlined,
-                label: "eConsultation",
+                label: "Feedback",
                 onTap: () {
                   Navigator.push(context, MaterialPageRoute(
                     builder: (context) => const EConsultationScreen(),
@@ -444,7 +445,7 @@ class AppDrawer extends StatelessWidget {
           ),
           ListTile(
             leading: const Icon(Icons.medical_services_outlined),
-            title: const Text('eConsultation'),
+            title: const Text('Feedback'),
             onTap: () => navigateAndClose(const EConsultationScreen()),
           ),
           ListTile(

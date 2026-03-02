@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'login_screen.dart';
+import 'health_login.dart';
 
 class RoleSelectionScreen extends StatelessWidget {
   @override
@@ -49,9 +50,12 @@ class RoleSelectionScreen extends StatelessWidget {
                     textStyle: TextStyle(fontSize: 16),
                   ),
                   onPressed: () {
-                    // TODO: Add navigation for Health Official
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => LoginScreens()), // Use your login page widget
+                    );  //
                   },
-                  child: Text('Health Official', style: TextStyle(color: Color(0xFF38A4D7))),
+                  child: Text(' official', style: TextStyle(color: Color(0xFF38A4D7))),
                 ),
               ),
               SizedBox(height: 15),

@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'signup.dart';
-//import 'select_city_screen.dart';
 import 'home_screen.dart';
+import 'official_dashboard_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
-
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
@@ -23,67 +23,52 @@ class _LoginScreenState extends State<LoginScreen> {
   Future<void> login() async {
     setState(() => isLoading = true);
 
-    final url = Uri.parse('http://192.168.137.1:8000/api/userauth/login/');
-
     try {
+      // 🟢 1. REQUEST PERMISSION (Specifically for Android 13+)
+      FirebaseMessaging messaging = FirebaseMessaging.instance;
+      NotificationSettings settings = await messaging.requestPermission(
+        alert: true, badge: true, sound: true,
+      );
+
+      // 🟢 2. GET THE ANONYMOUS DEVICE TOKEN
+      String? fcmToken = await messaging.getToken();
+      print("🚀 DEVICE TOKEN: $fcmToken"); // Copy this from console to test manually!
+
+      final url = Uri.parse('http://192.168.24.71:8080/api/accounts/login/');
+
       final response = await http.post(
         url,
         headers: {'Content-Type': 'application/json'},
         body: jsonEncode({
-          "username_or_email": userController.text.trim(),
+          "username": userController.text.trim(),
           "password": passController.text,
+          "fcm_token": fcmToken, // 🟢 SENDS TOKEN TO DJANGO
         }),
       );
 
-      print("Login response: ${response.body}"); // Debug backend response
-
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
+        final token = data['token'];
+        final role = data['role'];
 
-        // ✅ TOKEN FIX: Correctly using the 'token' key
-        final token = data['token']?.toString();
-
-        if (token != null && token.isNotEmpty) {
+        if (token != null) {
           SharedPreferences prefs = await SharedPreferences.getInstance();
           await prefs.setString('token', token);
+          await prefs.setString('role', role);
 
-          setState(() {
-            loginMessage = 'Login successful';
-          });
-
-          //Navigator.pushReplacement(
-           // context,
-           // MaterialPageRoute(builder: (context) => const SelectCityScreen()),
-         // );
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(builder: (context) => const HomeScreen()),
-          );
-        } else {
-          setState(() {
-            loginMessage = "Login failed: Token not received";
-          });
+          if (role == 'official') {
+            Navigator.pushReplacement(context, MaterialPageRoute(builder: (c) => const OfficialDashboardScreen()));
+          } else {
+            Navigator.pushReplacement(context, MaterialPageRoute(builder: (c) => const HomeScreen()));
+          }
         }
       } else {
-        final errorData = jsonDecode(response.body);
-        setState(() {
-          loginMessage = errorData['detail']?.toString() ?? "Invalid credentials";
-        });
+        setState(() => loginMessage = "Invalid credentials");
       }
     } catch (e) {
-      setState(() {
-        loginMessage = "Error connecting to server: $e";
-      });
+      setState(() => loginMessage = "Connection Error: $e");
     } finally {
-      setState(() => isLoading = false);
-    }
-  }
-
-  void clearLoginMessage() {
-    if (loginMessage.isNotEmpty) {
-      setState(() {
-        loginMessage = '';
-      });
+      if (mounted) setState(() => isLoading = false);
     }
   }
 
@@ -95,127 +80,43 @@ class _LoginScreenState extends State<LoginScreen> {
         child: SingleChildScrollView(
           child: Container(
             width: 350,
-            padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 24),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(10),
-            ),
+            padding: const EdgeInsets.all(24),
+            decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10)),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const Text(
-                  "MediSense",
-                  style: TextStyle(
-                    fontSize: 32,
-                    color: Color(0xFF22B7E9),
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const SizedBox(height: 8),
-                const Text(
-                  "Log In",
-                  style: TextStyle(
-                      fontSize: 24, color: Colors.black, fontWeight: FontWeight.bold),
-                ),
+                const Text("MediSense", style: TextStyle(fontSize: 32, color: Color(0xFF22B7E9), fontWeight: FontWeight.bold)),
                 const SizedBox(height: 28),
-
                 TextField(
                   controller: userController,
-                  decoration: InputDecoration(
-                    prefixIcon: const Icon(Icons.email, color: Color(0xFF22B7E9)),
-                    labelText: "Email Address",
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-                  ),
-                  keyboardType: TextInputType.emailAddress,
-                  onChanged: (value) => clearLoginMessage(),
+                  decoration: const InputDecoration(prefixIcon: Icon(Icons.email, color: Color(0xFF22B7E9)), labelText: "Email/Username", border: OutlineInputBorder()),
                 ),
                 const SizedBox(height: 16),
-
                 TextField(
                   controller: passController,
                   obscureText: !showPassword,
                   decoration: InputDecoration(
-                    prefixIcon: const Icon(Icons.lock_outline, color: Color(0xFF22B7E9)),
+                    prefixIcon: const Icon(Icons.lock, color: Color(0xFF22B7E9)),
                     labelText: "Password",
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-                    suffixIcon: IconButton(
-                      icon: Icon(showPassword ? Icons.visibility : Icons.visibility_off),
-                      onPressed: () {
-                        setState(() {
-                          showPassword = !showPassword;
-                        });
-                      },
-                    ),
-                  ),
-                  onChanged: (value) => clearLoginMessage(),
-                ),
-                const SizedBox(height: 12),
-
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: Text(
-                    "Forgot Password?",
-                    style: TextStyle(fontSize: 13, color: Colors.grey[700]),
+                    border: const OutlineInputBorder(),
+                    suffixIcon: IconButton(icon: Icon(showPassword ? Icons.visibility : Icons.visibility_off), onPressed: () => setState(() => showPassword = !showPassword)),
                   ),
                 ),
-                const SizedBox(height: 20),
-
+                const SizedBox(height: 25),
                 SizedBox(
                   width: double.infinity,
                   height: 48,
                   child: ElevatedButton(
                     onPressed: isLoading ? null : login,
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFF22B7E9),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                    ),
-                    child: isLoading
-                        ? const CircularProgressIndicator(color: Colors.white)
-                        : const Text(
-                      "Sign In",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold),
-                    ),
+                    style: ElevatedButton.styleFrom(backgroundColor: const Color(0xFF22B7E9)),
+                    child: isLoading ? const CircularProgressIndicator(color: Colors.white) : const Text("Sign In", style: TextStyle(color: Colors.white)),
                   ),
                 ),
-                if (loginMessage.isNotEmpty) ...[
-                  const SizedBox(height: 10),
-                  Text(
-                    loginMessage,
-                    style: const TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
-                  ),
-                ],
-
-                const SizedBox(height: 28),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text("Don't Have an Account?",
-                        style: TextStyle(color: Colors.grey[700], fontSize: 15)),
-                    const SizedBox(width: 4),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          // 🚨 FINAL FIX: REMOVED 'const' from SignUpPage()
-                          // because SignUpPage is a StatefulWidget and cannot be const.
-                          MaterialPageRoute(builder: (context) => SignUpPage()),
-                        );
-                      },
-                      child: const Text(
-                        "Sign Up",
-                        style: TextStyle(
-                            color: Color(0xFF22B7E9),
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16),
-                      ),
-                    ),
-                  ],
-                ),
+                if (loginMessage.isNotEmpty) Padding(padding: const EdgeInsets.only(top: 10), child: Text(loginMessage, style: const TextStyle(color: Colors.red))),
+                const SizedBox(height: 20),
+                GestureDetector(
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (c) => SignUpPage())),
+                  child: const Text("Sign Up", style: TextStyle(color: Color(0xFF22B7E9), fontWeight: FontWeight.bold)),
+                )
               ],
             ),
           ),

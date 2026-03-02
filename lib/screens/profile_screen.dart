@@ -199,7 +199,7 @@ class _SetupProfileScreenState extends State<SetupProfileScreen> {
       return;
     }
 
-    final url = Uri.parse("http://192.168.137.1:8000/api/accounts/profile/");
+    final url = Uri.parse("http://192.168.24.71:8080/api/accounts/profile/");
 
     print("Sending request with Token: $token");
 
